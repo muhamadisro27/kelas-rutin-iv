@@ -1,0 +1,71 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "currentStage",
+				"outputs": [
+					{
+						"internalType": "enum LearnEnum.GrowStage",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "grow",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"sesi-1-liskgarden/contracts/06-LearnEnum.sol": "LearnEnum"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"sesi-1-liskgarden/contracts/06-LearnEnum.sol": {
+			"keccak256": "0x6cb0e3b0cb2e221fc8ee439870f512affb12a92d3ab7b25758b88df5568efef4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://53db892430d6d22f367c1fcc502c17ca4d717521ac2666af353e639f4d5ee7f3",
+				"dweb:/ipfs/QmZNXSbXdTFhiPrQiUtWnNypFLmMF6oRScwdjFusDxQFAK"
+			]
+		}
+	},
+	"version": 1
+}
