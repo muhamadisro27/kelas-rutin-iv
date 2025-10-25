@@ -12,6 +12,9 @@ contract SimplePlant {
     constructor() {
         plantName = "Rose";
         owner = msg.sender;
+        waterLevel = 100;
+        isAlive = true;
+        plantedTime = block.timestamp;
     }
 
     function water() public  {
