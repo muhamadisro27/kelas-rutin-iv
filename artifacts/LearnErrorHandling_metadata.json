@@ -11,19 +11,8 @@
 				"type": "constructor"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "a",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "b",
-						"type": "uint256"
-					}
-				],
-				"name": "add",
+				"inputs": [],
+				"name": "balance",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -31,12 +20,18 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "pure",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "buyItem",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "number",
+						"type": "uint256"
+					}
+				],
+				"name": "checkEven",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -44,90 +39,37 @@
 						"type": "bool"
 					}
 				],
-				"stateMutability": "payable",
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "x",
+						"name": "value",
 						"type": "uint256"
 					}
 				],
-				"name": "calculateDouble",
+				"name": "complexCheck",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "string",
 						"name": "",
-						"type": "uint256"
+						"type": "string"
 					}
 				],
 				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "counter",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getBalance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getCounter",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "incrementCounter",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -136,24 +78,13 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "a",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "b",
+						"name": "newBalance",
 						"type": "uint256"
 					}
 				],
-				"name": "multiply",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
+				"name": "internalCheck",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -172,12 +103,44 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userBalance",
+				"outputs": [
+					{
 						"internalType": "uint256",
-						"name": "_newValue",
+						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "setCounter",
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -196,7 +159,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"sesi-1-liskgarden/contracts/19-LearnErrorHandling.sol": "LearnFunctionModifiers"
+			"sesi-1-liskgarden/contracts/19-LearnErrorHandling.sol": "LearnErrorHandling"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -211,11 +174,11 @@
 	},
 	"sources": {
 		"sesi-1-liskgarden/contracts/19-LearnErrorHandling.sol": {
-			"keccak256": "0x34bb4b6bde080f8ec6f04b2f42f3790becf24393d466bfc7f9ae77abfe0444a0",
+			"keccak256": "0x91af8b53da4e2506524a01c320959b0967b4e9d5cf234ab6bf827f2d4c6bdf80",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9b31467ae6f5b6bf6b204b8ab587f5d46eb47309c4360f2662fde2fa235f3fac",
-				"dweb:/ipfs/QmPLHQdoqifZ5TnYHHxNrGcvXQ5kaZaKaALGfjieaTUSEP"
+				"bzz-raw://c151df67358976573e0115b3172e17a0e44f11c828c2c3ede2f48ededef9cf68",
+				"dweb:/ipfs/Qmbyy5ZJfTb91MuUw8xbPjPL1BzA8miFUp98LJhbnTAAeR"
 			]
 		}
 	},
