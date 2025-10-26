@@ -3,7 +3,6 @@ pragma solidity ^0.8.30;
 
 contract LiskGarden {
 
-
     enum GrowthStage {SEED, SPROUT, GROWING, BLOOMING}
 
     struct Plant {
@@ -22,7 +21,6 @@ contract LiskGarden {
     mapping(address => uint256[]) public userPlants;
 
     uint256 public plantCounter;
-
     address public owner;
 
     uint256 public constant PLANT_PRICE = 0.001 ether;
@@ -42,23 +40,47 @@ contract LiskGarden {
         owner = msg.sender;
     }
 
-    function plantSeed() external payable returns (uint256) {
+    modifier onlyOwner {
+        require(msg.sender == owner, "Only owner!");
+        _;
+    }
+
+    modifier onlyOwnerPlant(uint256 _plantId) {
+        require(plants[_plantId].owner == msg.sender, "You are not the owner!");
+        _;
+    }
+
+    modifier isBalanceEnough {
         require(msg.value >= PLANT_PRICE, "Insufficient balance!");
+        _;
+    }
 
-        plantCounter++;
+    modifier isPlantAlive(uint256 _plantId) {
+        require(!plants[_plantId].isDead, "Plant already dead!");
+        _;
+    }
 
-        Plant memory newPlant = Plant({
+    modifier isPlantExist(uint256 _plantId) {
+        require(plants[_plantId].exists, "Plant doesn't exist!");
+        _;
+    }
+
+    modifier isBlooming(uint256 _plantId) {
+        require(plants[_plantId].stage == GrowthStage.BLOOMING, "Not blooming yet!");
+    _;
+    }
+
+    function plantSeed() isBalanceEnough external payable returns (uint256) {
+        plants[++plantCounter] = Plant({
             id: plantCounter,
             owner: msg.sender,
             stage: GrowthStage.SEED,
             plantedDate: block.timestamp,
             lastWatered: block.timestamp,
-            waterLevel : 100,
+            waterLevel: 100,
             exists: true,
             isDead: false
         });
-
-        plants[plantCounter] = newPlant;
         
         userPlants[msg.sender].push(plantCounter);
         
@@ -96,12 +118,8 @@ contract LiskGarden {
         }
     }
 
-    function waterPlant(uint256 _plantId) external {
+    function waterPlant(uint256 _plantId) external isPlantExist(_plantId) isPlantAlive(_plantId) onlyOwnerPlant(_plantId) {
         Plant storage plant = plants[_plantId];
-        require(plant.exists, "Plant doesn't exist!");
-        require(plant.owner == msg.sender, "You are not the owner!");
-        require(!plant.isDead, "Plant already dead!");
-
         plant.waterLevel = 100;
         plant.lastWatered = block.timestamp;
 
@@ -109,9 +127,8 @@ contract LiskGarden {
         updatePlantStage(_plantId);
     }
 
-    function updatePlantStage(uint256 _plantId) public  {
+    function updatePlantStage(uint256 _plantId) public isPlantExist(_plantId)  {
         Plant storage plant = plants[_plantId];
-        require(plant.exists, "Plant doesn't exist!");
 
         updateWaterLevel(_plantId);
         if(plant.isDead) return;
@@ -134,19 +151,17 @@ contract LiskGarden {
         }
     }
  
-    function harvestPlant(uint256 plantId) external {
-        Plant storage plant = plants[plantId];
-        require(plant.exists, "Plant doesn't exist!");
-        require(plant.owner == msg.sender, "You are not the owner!");
-        require(!plant.isDead, "Plant already dead!");
+    function harvestPlant(uint256 _plantId) external isPlantExist(_plantId) isPlantAlive(_plantId) onlyOwnerPlant(_plantId) {
+        Plant storage plant = plants[_plantId];
 
-        updatePlantStage(plantId);
-        require(plant.stage == GrowthStage.BLOOMING, "Belum mekar");
+        updatePlantStage(_plantId);
+        require(plant.stage == GrowthStage.BLOOMING, "Plant not blooming yet!");
 
         plant.exists = false;
 
-        emit PlantHarvested(plantId, msg.sender, REWARD_HARVEST);
+        emit PlantHarvested(_plantId, msg.sender, REWARD_HARVEST);
 
+        require(address(this).balance >= REWARD_HARVEST, "Insufficient contract balance!");
         (bool success, ) = payable(msg.sender).call{value: REWARD_HARVEST}("");
         require(success, "Failed sending reward!");
     }
@@ -162,10 +177,21 @@ contract LiskGarden {
         return userPlants[user];
     }
 
-    function withdraw() external {
-        require(msg.sender == owner, "You are not the owner!");
-        (bool success, ) = owner.call{value: address(this).balance}("");
-        require(success, "Failed Transfer!");
+    function getStatusUserPlant(uint256 _plantId)
+        external
+        view
+        onlyOwnerPlant(_plantId)
+        returns (GrowthStage)
+    {
+        return plants[_plantId].stage;
+    }
+
+    function withdraw() external onlyOwner {
+        uint256 amount = address(this).balance;
+        require(amount > 0, "Nothing to withdraw");
+
+        (bool success, ) = payable(owner).call{value: amount}("");
+        require(success, "Failed transfer");
     }
 
     receive() external payable {}

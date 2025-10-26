@@ -253,6 +253,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_plantId",
+						"type": "uint256"
+					}
+				],
+				"name": "getStatusUserPlant",
+				"outputs": [
+					{
+						"internalType": "enum LiskGarden.GrowthStage",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "user",
 						"type": "address"
@@ -273,7 +292,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "plantId",
+						"name": "_plantId",
 						"type": "uint256"
 					}
 				],
@@ -465,11 +484,11 @@
 	},
 	"sources": {
 		"sesi-1-liskgarden/contracts/20-LiskGarden.sol": {
-			"keccak256": "0x895f65f41e9fcdde01027df2d987407caf5a031251561b7343a6ea7250e2e3fb",
+			"keccak256": "0x4d170cce776fdc278724529aa52797c97cb513349035e6154646fe842df3fa0f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8947f8038d1546c294c00d634260d01b785fefb97f01b3cd64c9d261a6544e99",
-				"dweb:/ipfs/QmdVsFmV1ynZUFZ9Bq53RMaHzCrwA2NQj2eYGdyFgY2D8p"
+				"bzz-raw://df9e0190242251450fa393a42a1ba90fc62735c851bfcda917653d272e8e032a",
+				"dweb:/ipfs/QmX3K5wGEsgV1WaUXU54T5xwctpXYSSB1r9YUiHxQB8MNP"
 			]
 		}
 	},
