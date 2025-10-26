@@ -1,7 +1,14 @@
-import { createPublicClient, createWalletClient, http, getAddress } from "viem"
+import {
+  createPublicClient,
+  createWalletClient,
+  http,
+  parseEther,
+  getAddress,
+} from "viem"
 import { privateKeyToAccount } from "viem/accounts"
 import { defineChain } from "viem"
 
+// Define Lisk Sepolia chain
 const liskSepolia = defineChain({
   id: 4202,
   name: "Lisk Sepolia",
@@ -24,10 +31,12 @@ const liskSepolia = defineChain({
 })
 
 async function main() {
+  // Replace with your deployed contract address
   const CONTRACT_ADDRESS = getAddress(
-    "0xA2f4506092FC2bEC58df508F71c6760465A42bd0"
+    "0x3800D8fa50fD609c989d2126e11411Ad8036Aaf2"
   )
 
+  // Setup Viem clients
   const privateKey = process.env.PRIVATE_KEY?.startsWith("0x")
     ? (process.env.PRIVATE_KEY as `0x${string}`)
     : (`0x${process.env.PRIVATE_KEY}` as `0x${string}`)
@@ -147,11 +156,25 @@ async function main() {
         inputs: [{ internalType: "uint256", name: "plantId", type: "uint256" }],
         name: "getPlant",
         outputs: [
-          { internalType: "uint256", name: "id", type: "uint256" },
-          { internalType: "address", name: "owner", type: "address" },
-          { internalType: "uint8", name: "stage", type: "uint8" },
-          { internalType: "uint256", name: "waterLevel", type: "uint256" },
-          { internalType: "bool", name: "isAlive", type: "bool" },
+          {
+            components: [
+              { internalType: "uint256", name: "id", type: "uint256" },
+              { internalType: "address", name: "owner", type: "address" },
+              {
+                internalType: "enum LiskGarden.GrowthStage",
+                name: "stage",
+                type: "uint8",
+              },
+              { internalType: "uint256", name: "plantedDate", type: "uint256" },
+              { internalType: "uint256", name: "lastWatered", type: "uint256" },
+              { internalType: "uint8", name: "waterLevel", type: "uint8" },
+              { internalType: "bool", name: "exists", type: "bool" },
+              { internalType: "bool", name: "isDead", type: "bool" },
+            ],
+            internalType: "struct LiskGarden.Plant",
+            name: "",
+            type: "tuple",
+          },
         ],
         stateMutability: "view",
         type: "function",
@@ -161,15 +184,24 @@ async function main() {
     args: [plantId],
   })
   console.log("\n🌿 Plant details:")
-  console.log("  - ID:", plant[0].toString())
-  console.log("  - Owner:", plant[1])
+  console.log("  - ID:", plant.id.toString())
+  console.log("  - Owner:", plant.owner)
   console.log(
     "  - Stage:",
-    plant[2],
+    plant.stage,
     "(0=SEED, 1=SPROUT, 2=GROWING, 3=BLOOMING)"
   )
-  console.log("  - Water Level:", plant[3].toString())
-  console.log("  - Is Alive:", plant[4])
+  console.log(
+    "  - Planted Date:",
+    new Date(Number(plant.plantedDate) * 1000).toLocaleString()
+  )
+  console.log(
+    "  - Last Watered:",
+    new Date(Number(plant.lastWatered) * 1000).toLocaleString()
+  )
+  console.log("  - Water Level:", plant.waterLevel.toString())
+  console.log("  - Exists:", plant.exists)
+  console.log("  - Is Dead:", plant.isDead)
 }
 
 main()
