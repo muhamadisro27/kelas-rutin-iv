@@ -190,6 +190,13 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -484,11 +491,11 @@
 	},
 	"sources": {
 		"sesi-1-liskgarden/contracts/20-LiskGarden.sol": {
-			"keccak256": "0x775e82cf3be9304a0ebd39508828c7b73eb107b0f8daabd228a980bc7cd910c5",
+			"keccak256": "0xa813eca188ccfb6649f268d7d31bfc9a8a170ab5341bf40ca104e5774e0426e3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://62f4d8beb0276a7c1d8297dc3bfcce53518cfaea90a94ba5a43a71559860df70",
-				"dweb:/ipfs/QmdLeTSC7wXKz5fz69GUHYJq538pxY2XZESoKJJBtZUmVa"
+				"bzz-raw://1f690933e0e2b7497cc2eeb989d120ac8bb268535e67bb36e95b1f63021d90e1",
+				"dweb:/ipfs/QmVbiJoVDQVzZKYzW7R9JFbDCwnVtK6g8VBDnY9PWGL1QY"
 			]
 		}
 	},

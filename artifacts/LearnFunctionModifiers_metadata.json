@@ -196,7 +196,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"sesi-1-liskgarden/contracts/19-LearnErrorHandling.sol": "LearnFunctionModifiers"
+			"sesi-1-liskgarden/contracts/18-LearnFunctionModifiers.sol": "LearnFunctionModifiers"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -210,12 +210,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"sesi-1-liskgarden/contracts/19-LearnErrorHandling.sol": {
-			"keccak256": "0x34bb4b6bde080f8ec6f04b2f42f3790becf24393d466bfc7f9ae77abfe0444a0",
+		"sesi-1-liskgarden/contracts/18-LearnFunctionModifiers.sol": {
+			"keccak256": "0xf8a185ae529e48967d922a01b86db587c95e41f3f48e9db33791e4ad9ff9cc50",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9b31467ae6f5b6bf6b204b8ab587f5d46eb47309c4360f2662fde2fa235f3fac",
-				"dweb:/ipfs/QmPLHQdoqifZ5TnYHHxNrGcvXQ5kaZaKaALGfjieaTUSEP"
+				"bzz-raw://e8f450369020c82488dbae9342a479414422fb3217bdad98a2b52ac5f5895b91",
+				"dweb:/ipfs/Qmcpe584rrnG1h8f4GUJ8XXTbQU8rDcfW3LAEUHhm5Amc8"
 			]
 		}
 	},

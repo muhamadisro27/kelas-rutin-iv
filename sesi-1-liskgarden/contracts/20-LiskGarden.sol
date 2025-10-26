@@ -90,7 +90,7 @@ contract LiskGarden {
     }
 
     function calculateWaterLevel(uint256 _plantId) public view returns (uint8) {
-        Plant storage plant = plants[_plantId];
+        Plant memory plant = plants[_plantId];
 
         if(!plant.exists || plant.isDead) return 0;
 
@@ -193,6 +193,8 @@ contract LiskGarden {
         (bool success, ) = payable(owner).call{value: amount}("");
         require(success, "Failed transfer");
     }
+
+    function deposit() external payable onlyOwner {}
 
     receive() external payable {}
 }
