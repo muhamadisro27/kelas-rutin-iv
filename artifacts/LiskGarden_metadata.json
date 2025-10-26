@@ -484,11 +484,11 @@
 	},
 	"sources": {
 		"sesi-1-liskgarden/contracts/20-LiskGarden.sol": {
-			"keccak256": "0x4d170cce776fdc278724529aa52797c97cb513349035e6154646fe842df3fa0f",
+			"keccak256": "0x775e82cf3be9304a0ebd39508828c7b73eb107b0f8daabd228a980bc7cd910c5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://df9e0190242251450fa393a42a1ba90fc62735c851bfcda917653d272e8e032a",
-				"dweb:/ipfs/QmX3K5wGEsgV1WaUXU54T5xwctpXYSSB1r9YUiHxQB8MNP"
+				"bzz-raw://62f4d8beb0276a7c1d8297dc3bfcce53518cfaea90a94ba5a43a71559860df70",
+				"dweb:/ipfs/QmdLeTSC7wXKz5fz69GUHYJq538pxY2XZESoKJJBtZUmVa"
 			]
 		}
 	},

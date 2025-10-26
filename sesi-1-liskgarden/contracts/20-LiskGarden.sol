@@ -67,7 +67,7 @@ contract LiskGarden {
 
     modifier isBlooming(uint256 _plantId) {
         require(plants[_plantId].stage == GrowthStage.BLOOMING, "Not blooming yet!");
-    _;
+        _;
     }
 
     function plantSeed() isBalanceEnough external payable returns (uint256) {
