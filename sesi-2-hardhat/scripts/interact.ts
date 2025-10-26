@@ -33,7 +33,7 @@ const liskSepolia = defineChain({
 async function main() {
   // Replace with your deployed contract address
   const CONTRACT_ADDRESS = getAddress(
-    "0x3800D8fa50fD609c989d2126e11411Ad8036Aaf2"
+    process.env.CONTRACT_ADDRESS!
   )
 
   // Setup Viem clients
