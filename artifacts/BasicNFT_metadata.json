@@ -1,0 +1,233 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "balances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "mint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "nextTokenId",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "owners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "transfer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "NFT paling sederhana - mint & transfer saja",
+			"kind": "dev",
+			"methods": {
+				"balanceOf(address)": {
+					"details": "Get balance of address"
+				},
+				"mint(address)": {
+					"details": "Mint NFT baru",
+					"params": {
+						"to": "Recipient address"
+					},
+					"returns": {
+						"_0": "tokenId The ID of minted NFT"
+					}
+				},
+				"ownerOf(uint256)": {
+					"details": "Get owner of token"
+				},
+				"transfer(address,uint256)": {
+					"details": "Transfer NFT",
+					"params": {
+						"to": "Recipient",
+						"tokenId": "NFT to transfer"
+					}
+				}
+			},
+			"stateVariables": {
+				"balances": {
+					"details": "Mapping dari owner address ke jumlah NFT"
+				},
+				"nextTokenId": {
+					"details": "Counter untuk token ID berikutnya"
+				},
+				"owners": {
+					"details": "Mapping dari token ID ke owner address"
+				}
+			},
+			"title": "BasicNFT",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"sesi-2-token-standards/contracts/BasicNFT.sol": "BasicNFT"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"sesi-2-token-standards/contracts/BasicNFT.sol": {
+			"keccak256": "0x04d31fed9533251312a89957bb90015a5a09bf9bddfe35ed08a2e9fd1e0909e5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://087ba50c36685062908f705d205b8c2342e8769755086ed09f8d8baca2c5319c",
+				"dweb:/ipfs/QmWbvp4Vvt2nF9eXCkDjyVo3UCg8MVHrv7RHhEZYFEEvGy"
+			]
+		}
+	},
+	"version": 1
+}
